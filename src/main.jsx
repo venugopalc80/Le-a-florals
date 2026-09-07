@@ -41,7 +41,7 @@ function App() {
     <main id="top">
       <section className="hero-new">
         <div className="hero-title"><p>Floral design studio</p><h1>flowers,<br/><i>arranged<br/>differently.</i></h1></div>
-        <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=92" alt="Editorial floral arrangement"/></div>
+        <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=1800&q=92" alt="Editorial floral arrangement"/></div>
         <div className="hero-note">Floral design for brands, spaces<br/>and moments worth remembering.</div>
       </section>
 
