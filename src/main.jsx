@@ -3,15 +3,15 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 
 const work = [
-  { no: '01', title: 'Soft architecture', type: 'Floral installation', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=90' },
-  { no: '02', title: 'A study in bloom', type: 'Editorial styling', image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90' },
-  { no: '03', title: 'Wild romance', type: 'Celebration florals', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1400&q=90' },
+  { no: '01', title: 'Brand commissions', type: 'Floral direction', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=90' },
+  { no: '02', title: 'Floral studies', type: 'Editorial direction', image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90' },
+  { no: '03', title: 'Celebrations', type: 'Flowers & styling', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1400&q=90' },
 ];
 
 const shop = [
-  { name: 'Seasonal bouquet', note: 'A one-off hand-tied arrangement', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1100&q=90' },
-  { name: 'The studio vase', note: 'Sculptural florals for the home', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1100&q=90' },
-  { name: 'Little wild thing', note: 'A smaller seasonal gesture', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1100&q=90' },
+  { name: 'Seasonal flowers', note: 'Arrangements created around the season', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1100&q=90' },
+  { name: 'Flowers for the home', note: 'Sculptural seasonal arrangements', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1100&q=90' },
+  { name: 'Something small', note: 'A considered seasonal gesture', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1100&q=90' },
 ];
 
 function Arrow() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M8 4h12v12"/></svg>; }
@@ -20,7 +20,7 @@ function SafeImage({ src, alt, eager = false }) {
   const [failed, setFailed] = useState(false);
   return <div className={`safe-image ${failed ? 'is-fallback' : ''}`}>
     {!failed && <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" onError={() => setFailed(true)} />}
-    {failed && <div className="fallback-art" aria-label={alt}><span>Leïa</span><i/><b/><em/></div>}
+    {failed && <div className="fallback-art" aria-label={alt}><span>Leïa</span></div>}
   </div>;
 }
 
@@ -31,24 +31,24 @@ function App() {
   return <div className="site">
     <div className="topline"><span>Leïa Florals</span><span>Floral design / Greater Manchester</span><span>Scroll to explore ↓</span></div>
     <header className="nav">
-      <a className="wordmark" href="#top" onClick={close}>Leïa<span>®</span></a>
+      <a className="wordmark" href="#top" onClick={close}>Leïa</a>
       <nav className={menu ? 'nav-links open' : 'nav-links'}>
         <a href="#work" onClick={close}>Work</a><a href="#studio" onClick={close}>Studio</a><a href="#flowerbar" onClick={close}>Flower Bar</a><a href="#shop" onClick={close}>Flowers</a><a href="#contact" onClick={close}>Enquire</a>
       </nav>
-      <button className="menu" onClick={() => setMenu(!menu)} aria-label="Menu">{menu ? <Close/> : <span>Menu</span>}</button>
+      <button className="menu" onClick={() => setMenu(!menu)} aria-label={menu ? 'Close menu' : 'Open menu'}>{menu ? <Close/> : <span>Menu</span>}</button>
     </header>
 
     <main id="top">
       <section className="hero-new">
         <div className="hero-stamp">01<br/><span>FLORAL<br/>STUDIO</span></div>
         <div className="hero-title"><p>Seasonal / expressive / considered</p><h1>flowers,<br/><i>arranged<br/>differently.</i></h1></div>
-        <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=92" alt="Editorial floral arrangement"/><div className="photo-label">A floral study / 2026</div></div>
-        <div className="hero-note">Floral design for brands, spaces<br/>and the moments worth remembering.</div>
+        <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=92" alt="Editorial floral arrangement"/><div className="photo-label">Floral direction</div></div>
+        <div className="hero-note">Floral design for brands, spaces<br/>and moments worth remembering.</div>
       </section>
 
       <section className="manifesto" id="studio">
         <div className="manifesto-kicker">02 / The point of view</div>
-        <div className="manifesto-copy"><p>Leïa Florals is a floral design studio creating work with <em>shape, seasonality and feeling.</em></p><span>Not a traditional florist. A creative practice in flowers.</span></div>
+        <div className="manifesto-copy"><p>Leïa Florals is a floral design studio creating work with <em>shape, seasonality and feeling.</em></p><span>A considered approach to flowers, styling and spaces.</span></div>
       </section>
 
       <section className="work-new" id="work">
@@ -85,7 +85,7 @@ function App() {
 
     <footer><div className="footer-word">Leïa<span>Florals</span></div><div>Floral design<br/>Greater Manchester</div><div><a href="#work">Work</a><a href="#shop">Flowers</a><a href="#contact">Enquiries</a></div><div>© 2026<br/>Website concept by The Pixel Muses</div></footer>
 
-    {orderOpen && <div className="modal" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)}><Close/></button><span>Flowers / Enquiry</span><h2>Tell us what<br/><i>you're imagining.</i></h2><form onSubmit={e => e.preventDefault()}><input placeholder="Your name"/><input type="email" placeholder="Email address"/><input placeholder="Preferred date"/><textarea rows="4" placeholder="Occasion, location, mood..."/><button>Send enquiry <Arrow/></button></form></div></div>}
+    {orderOpen && <div className="modal" role="dialog" aria-modal="true" aria-label="Flowers enquiry" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)} aria-label="Close enquiry"><Close/></button><span>Flowers / Enquiry</span><h2>Tell us what<br/><i>you're imagining.</i></h2><form onSubmit={e => e.preventDefault()}><input aria-label="Your name" placeholder="Your name"/><input aria-label="Email address" type="email" placeholder="Email address"/><input aria-label="Preferred date" placeholder="Preferred date"/><textarea aria-label="Enquiry details" rows="4" placeholder="Occasion, location, mood..."/><button type="submit">Send enquiry <Arrow/></button></form></div></div>}
   </div>;
 }
 createRoot(document.getElementById('root')).render(<App />);
