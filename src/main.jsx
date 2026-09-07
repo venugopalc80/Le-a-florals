@@ -3,52 +3,89 @@ import { createRoot } from 'react-dom/client';
 import './styles.css';
 
 const work = [
-  { title: 'Soft architecture', type: 'Floral installation', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1400&q=85' },
-  { title: 'A study in bloom', type: 'Editorial styling', image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=85' },
-  { title: 'Wild romance', type: 'Celebration florals', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1400&q=85' },
+  { no: '01', title: 'Soft architecture', type: 'Floral installation', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1600&q=90' },
+  { no: '02', title: 'A study in bloom', type: 'Editorial styling', image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1400&q=90' },
+  { no: '03', title: 'Wild romance', type: 'Celebration florals', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1400&q=90' },
 ];
+
 const shop = [
-  { name: 'Seasonal bouquet', note: 'A one-off hand-tied arrangement', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=900&q=85' },
-  { name: 'The studio vase', note: 'Sculptural florals for the home', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=900&q=85' },
-  { name: 'Little wild thing', note: 'A smaller seasonal gesture', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=900&q=85' },
+  { name: 'Seasonal bouquet', note: 'A one-off hand-tied arrangement', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1100&q=90' },
+  { name: 'The studio vase', note: 'Sculptural florals for the home', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1100&q=90' },
+  { name: 'Little wild thing', note: 'A smaller seasonal gesture', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1100&q=90' },
 ];
 
-const Icon = ({ name, size = 16 }) => {
-  const common = { width: size, height: size, viewBox: '0 0 24 24', fill: 'none', stroke: 'currentColor', strokeWidth: 1.8, strokeLinecap: 'round', strokeLinejoin: 'round', 'aria-hidden': true };
-  if (name === 'arrow') return <svg {...common}><path d="M5 19 19 5"/><path d="M8 5h11v11"/></svg>;
-  if (name === 'menu') return <svg {...common}><path d="M4 7h16M4 12h16M4 17h16"/></svg>;
-  if (name === 'close') return <svg {...common}><path d="m6 6 12 12M18 6 6 18"/></svg>;
-  if (name === 'instagram') return <svg {...common}><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg>;
-  return null;
-};
-
+function Arrow() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M8 4h12v12"/></svg>; }
+function Close() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg>; }
 function SafeImage({ src, alt, eager = false }) {
   const [failed, setFailed] = useState(false);
-  return <div className={`safe-image ${failed ? 'is-fallback' : ''}`} role="img" aria-label={alt}>
+  return <div className={`safe-image ${failed ? 'is-fallback' : ''}`}>
     {!failed && <img src={src} alt={alt} loading={eager ? 'eager' : 'lazy'} decoding="async" onError={() => setFailed(true)} />}
-    {failed && <div className="fallback-art" aria-hidden="true"><span>Leïa</span><i></i><b></b><em></em></div>}
+    {failed && <div className="fallback-art" aria-label={alt}><span>Leïa</span><i/><b/><em/></div>}
   </div>;
 }
 
 function App() {
   const [menu, setMenu] = useState(false);
   const [orderOpen, setOrderOpen] = useState(false);
-  const closeMenu = () => setMenu(false);
-  return <div className="site-shell">
-    <div className="announce">GREATER MANCHESTER · FLORAL DESIGN · FLOWER BAR COMING SOON</div>
-    <header className="nav-wrap"><a className="brand" href="#top" onClick={closeMenu}>Leïa <span>Florals</span></a><nav className={menu ? 'nav mobile-open' : 'nav'}><a href="#shop" onClick={closeMenu}>Shop</a><a href="#services" onClick={closeMenu}>Services</a><a href="#work" onClick={closeMenu}>Work</a><a href="#flowerbar" onClick={closeMenu}>Flower Bar</a><a href="#contact" onClick={closeMenu}>Contact</a></nav><div className="nav-actions"><button className="pill pill-dark" onClick={() => setOrderOpen(true)}>Order flowers</button><button className="menu-button" aria-label="Toggle menu" onClick={() => setMenu(!menu)}>{menu ? <Icon name="close" size={21}/> : <Icon name="menu" size={21}/>}</button></div></header>
+  const close = () => setMenu(false);
+  return <div className="site">
+    <div className="topline"><span>Leïa Florals</span><span>Floral design / Greater Manchester</span><span>Scroll to explore ↓</span></div>
+    <header className="nav">
+      <a className="wordmark" href="#top" onClick={close}>Leïa<span>®</span></a>
+      <nav className={menu ? 'nav-links open' : 'nav-links'}>
+        <a href="#work" onClick={close}>Work</a><a href="#studio" onClick={close}>Studio</a><a href="#flowerbar" onClick={close}>Flower Bar</a><a href="#shop" onClick={close}>Flowers</a><a href="#contact" onClick={close}>Enquire</a>
+      </nav>
+      <button className="menu" onClick={() => setMenu(!menu)} aria-label="Menu">{menu ? <Close/> : <span>Menu</span>}</button>
+    </header>
+
     <main id="top">
-      <section className="hero section-pad"><div className="hero-copy"><p className="eyebrow">Floral design, thoughtfully composed</p><h1>Flowers with<br/><em>a point of view.</em></h1><p className="hero-text">Seasonal florals, installations and styling for brands, spaces and the moments worth remembering.</p><div className="hero-actions"><a href="#work" className="pill pill-dark">Explore the work <Icon name="arrow" size={15}/></a><a href="#contact" className="text-link">Work with Leïa</a></div></div><div className="hero-image-wrap"><SafeImage eager src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1500&q=90" alt="Editorial floral arrangement"/><div className="hero-caption"><span>01</span><span>Made by hand · Manchester</span></div></div></section>
-      <section className="intro section-pad"><p className="eyebrow">A floral studio for modern moments</p><div className="intro-grid"><h2>Not just flowers.<br/><em>A feeling.</em></h2><div className="intro-body"><p>Leïa Florals creates expressive floral work that feels natural, elevated and unmistakably personal. From a single considered arrangement to full-scale installations, every piece begins with seasonality and the story behind the brief.</p><a className="text-link" href="#services">Discover the studio <Icon name="arrow" size={14}/></a></div></div></section>
-      <section id="work" className="work section-pad"><div className="section-heading"><div><p className="eyebrow">Selected work</p><h2>Made to be noticed.</h2></div><a className="text-link" href="#contact">View portfolio <Icon name="arrow" size={14}/></a></div><div className="work-grid">{work.map((item, i) => <article className={`work-card card-${i}`} key={item.title}><SafeImage src={item.image} alt={item.title}/><div className="card-meta"><span>{item.type}</span><h3>{item.title}</h3></div></article>)}</div></section>
-      <section id="shop" className="shop section-pad"><div className="section-heading"><div><p className="eyebrow">Order flowers</p><h2>The shop, by season.</h2></div><p className="section-note">A small edit of flowers, arranged by hand. Availability follows what is looking beautiful now.</p></div><div className="shop-grid">{shop.map(item => <article className="shop-card" key={item.name}><div className="shop-image"><SafeImage src={item.image} alt={item.name}/><button className="quick-add" onClick={() => setOrderOpen(true)}>Order</button></div><div className="shop-meta"><div><h3>{item.name}</h3><p>{item.note}</p></div><span className="price">Enquire</span></div></article>)}</div><div className="shop-foot"><span>Seasonal availability · Greater Manchester</span><button className="text-link" onClick={() => setOrderOpen(true)}>Start an order <Icon name="arrow" size={14}/></button></div></section>
-      <section id="services" className="services section-pad"><div className="services-intro"><p className="eyebrow">What we do</p><h2>Florals for<br/><em>every kind of brief.</em></h2></div><div className="service-list">{['Brand collaborations','Events & installations','Weddings & celebrations','Editorial & creative styling'].map((s, i) => <a href="#contact" className="service-row" key={s}><span>0{i + 1}</span><h3>{s}</h3><Icon name="arrow" size={20}/></a>)}</div></section>
-      <section id="flowerbar" className="flowerbar"><div className="flowerbar-image"><SafeImage src="https://images.unsplash.com/photo-1494336934272-f7f4ea6cfd77?auto=format&fit=crop&w=1500&q=90" alt="Flowers on a café table"/></div><div className="flowerbar-copy"><p className="eyebrow">Something new is growing</p><h2>The Flower Bar<br/><em>at FIA Coffeehouse.</em></h2><p>A new way to pick up something beautiful. Follow the journey as Leïa Florals brings seasonal stems, thoughtful arrangements and a little floral joy to FIA.</p><a href="#contact" className="pill pill-light">Keep me posted <Icon name="arrow" size={15}/></a></div></section>
-      <section className="credibility section-pad"><p className="eyebrow">Selected collaborations</p><div className="logos"><span>JO MALONE</span><span>BENEFIT COSMETICS</span></div></section>
-      <section id="contact" className="contact section-pad"><div><p className="eyebrow">Let's create something beautiful</p><h2>Have a brief?<br/><em>Tell us everything.</em></h2></div><form className="contact-form" onSubmit={e => e.preventDefault()}><label>Name<input placeholder="Your name"/></label><label>Email<input type="email" placeholder="you@example.com"/></label><label>Project type<select defaultValue=""><option value="" disabled>Select one</option><option>Flowers</option><option>Wedding / celebration</option><option>Brand collaboration</option><option>Event / installation</option></select></label><label>Tell us about it<textarea rows="4" placeholder="Date, location, mood, and anything else useful..."></textarea></label><button className="pill pill-dark" type="submit">Send enquiry <Icon name="arrow" size={15}/></button></form></section>
+      <section className="hero-new">
+        <div className="hero-stamp">01<br/><span>FLORAL<br/>STUDIO</span></div>
+        <div className="hero-title"><p>Seasonal / expressive / considered</p><h1>flowers,<br/><i>arranged<br/>differently.</i></h1></div>
+        <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=92" alt="Editorial floral arrangement"/><div className="photo-label">A floral study / 2026</div></div>
+        <div className="hero-note">Floral design for brands, spaces<br/>and the moments worth remembering.</div>
+      </section>
+
+      <section className="manifesto" id="studio">
+        <div className="manifesto-kicker">02 / The point of view</div>
+        <div className="manifesto-copy"><p>Leïa Florals is a floral design studio creating work with <em>shape, seasonality and feeling.</em></p><span>Not a traditional florist. A creative practice in flowers.</span></div>
+      </section>
+
+      <section className="work-new" id="work">
+        <div className="section-intro"><span>03 / Selected work</span><h2>Made to leave<br/><i>an impression.</i></h2></div>
+        <div className="gallery">
+          {work.map((item, i) => <article className={`gallery-item g${i}`} key={item.title}>
+            <SafeImage src={item.image} alt={item.title}/>
+            <div className="gallery-caption"><span>{item.no}</span><div><strong>{item.title}</strong><small>{item.type}</small></div></div>
+          </article>)}
+        </div>
+      </section>
+
+      <section className="collab-strip"><span>Selected collaborations</span><strong>JO MALONE</strong><strong>BENEFIT COSMETICS</strong><span>Greater Manchester</span></section>
+
+      <section className="services-new">
+        <div className="service-heading"><span>04 / The studio</span><h2>From a stem<br/>to a <i>whole atmosphere.</i></h2></div>
+        <div className="service-list">
+          {['Brand collaborations','Events & installations','Weddings & celebrations','Editorial & creative styling'].map((item, i) => <a href="#contact" key={item}><span>0{i + 1}</span><b>{item}</b><Arrow/></a>)}
+        </div>
+      </section>
+
+      <section className="flowerbar-new" id="flowerbar">
+        <div className="flowerbar-image"><SafeImage src="https://images.unsplash.com/photo-1494336934272-f7f4ea6cfd77?auto=format&fit=crop&w=1800&q=92" alt="Flowers in a coffeehouse setting"/></div>
+        <div className="flowerbar-copy"><span>05 / Coming soon</span><p className="huge">The<br/><i>Flower Bar.</i></p><p className="flowerbar-body">A new floral ritual at FIA Coffeehouse. Seasonal stems, considered arrangements and something beautiful to take with you.</p><a href="#contact">Keep me posted <Arrow/></a></div>
+      </section>
+
+      <section className="shop-new" id="shop">
+        <div className="shop-heading"><span>06 / Flowers</span><h2>For when you want<br/><i>something beautiful.</i></h2><button onClick={() => setOrderOpen(true)}>Order flowers <Arrow/></button></div>
+        <div className="shop-list">{shop.map((item, i) => <article key={item.name}><div className="shop-photo"><SafeImage src={item.image} alt={item.name}/><span>0{i + 1}</span></div><div className="shop-copy"><h3>{item.name}</h3><p>{item.note}</p><button onClick={() => setOrderOpen(true)}>Enquire <Arrow/></button></div></article>)}</div>
+      </section>
+
+      <section className="closing" id="contact"><div className="closing-number">07</div><div><span>Have a brief?</span><h2>Let's make<br/><i>something memorable.</i></h2><a href="mailto:Hello@Leiaflorals.co.uk">Hello@Leiaflorals.co.uk <Arrow/></a></div></section>
     </main>
-    <footer className="footer section-pad"><div><a className="brand footer-brand" href="#top">Leïa <span>Florals</span></a><p>Floral design · Greater Manchester</p></div><div className="footer-links"><a href="#shop">Shop</a><a href="#work">Work</a><a href="#flowerbar">Flower Bar</a><a href="#contact">Enquiries</a></div><div className="footer-social"><a href="#top"><Icon name="instagram" size={18}/> Instagram</a><span>Hello@Leiaflorals.co.uk</span></div><div className="footer-bottom"><span>© 2026 Leïa Florals</span><span>Website concept by The Pixel Muses</span></div></footer>
-    {orderOpen && <div className="modal-backdrop" onClick={() => setOrderOpen(false)}><div className="order-modal" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)} aria-label="Close"><Icon name="close" size={20}/></button><p className="eyebrow">Order flowers</p><h2>Let's make it<br/><em>just right.</em></h2><p>Tell us the occasion, preferred date and the kind of flowers you're after. We'll come back with seasonal options and availability.</p><form onSubmit={e => e.preventDefault()}><input placeholder="Your name"/><input type="email" placeholder="Email address"/><input placeholder="Preferred date"/><textarea rows="4" placeholder="What are you looking for?"></textarea><button className="pill pill-dark">Send order enquiry <Icon name="arrow" size={15}/></button></form></div></div>}
+
+    <footer><div className="footer-word">Leïa<span>Florals</span></div><div>Floral design<br/>Greater Manchester</div><div><a href="#work">Work</a><a href="#shop">Flowers</a><a href="#contact">Enquiries</a></div><div>© 2026<br/>Website concept by The Pixel Muses</div></footer>
+
+    {orderOpen && <div className="modal" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)}><Close/></button><span>Flowers / Enquiry</span><h2>Tell us what<br/><i>you're imagining.</i></h2><form onSubmit={e => e.preventDefault()}><input placeholder="Your name"/><input type="email" placeholder="Email address"/><input placeholder="Preferred date"/><textarea rows="4" placeholder="Occasion, location, mood..."/><button>Send enquiry <Arrow/></button></form></div></div>}
   </div>;
 }
 createRoot(document.getElementById('root')).render(<App />);
