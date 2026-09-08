@@ -10,8 +10,8 @@ const worlds = [
 ];
 
 const flowers = [
-  { name: 'Hand-tied', price: 'From £45', image: 'https://images.unsplash.com/photo-1660885900178-964c51a9e176?auto=format&fit=crop&w=1200&q=92' },
-  { name: 'Signature', price: 'From £65', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1200&q=92' },
+  { name: 'Hand-tied', price: 'Enquire', image: 'https://images.unsplash.com/photo-1660885900178-964c51a9e176?auto=format&fit=crop&w=1200&q=92' },
+  { name: 'Signature', price: 'Enquire', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1200&q=92' },
   { name: 'Bespoke', price: 'Made for you', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=92' },
 ];
 
@@ -41,7 +41,7 @@ function App(){
 
       <section className="flowerbar" id="flowerbar"><div className="flowerbar-copy"><span>05 · Coming soon · FIA Coffeehouse</span><h2>The<br/><i>Flower Bar.</i></h2><p className="script">flowers<br/>coffee<br/>good people</p><p>A new little ritual: fresh flowers, great coffee and something beautiful to take with you. Coming soon at FIA Coffeehouse.</p><a href="mailto:Hello@Leiaflorals.co.uk?subject=Flower%20Bar%20updates">Get Flower Bar updates <Arrow/></a></div><div className="flowerbar-image"><SafeImage src="https://images.unsplash.com/photo-1780815227186-9adce46d69f6?auto=format&fit=crop&w=1800&q=92" alt="Fresh flowers, coffee and a quiet cafe moment"/></div></section>
 
-      <section className="flowers" id="flowers"><div className="flowers-head"><span>06 · The flower edit</span><h2>Something beautiful,<br/><i>for today.</i></h2><p>Hand-tied bouquets, signature arrangements or something completely bespoke — we create each one around the moment.</p></div><div className="flower-grid">{flowers.map(f=><article key={f.name}><div><SafeImage src={f.image} alt={f.name}/></div><div className="flower-meta"><span>{f.name}</span><small>{f.price}</small><button onClick={()=>enquire(f.name+' flowers')}>Order <Arrow/></button></div></article>)}</div></section>
+      <section className="flowers" id="flowers"><div className="flowers-head"><span>06 · The flower edit</span><h2>Something beautiful,<br/><i>for today.</i></h2><p>Hand-tied bouquets, signature arrangements or something completely bespoke — we create each one around the moment.</p></div><div className="flower-grid">{flowers.map(f=><article key={f.name}><div><SafeImage src={f.image} alt={f.name}/></div><div className="flower-meta"><span>{f.name}</span><small>{f.price}</small><button onClick={()=>enquire(f.name+' flowers')}>Enquire <Arrow/></button></div></article>)}</div></section>
 
       <section className="final" id="contact"><div className="final-flower"><SafeImage src="https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1200&q=92" alt="Single botanical stem"/></div><div className="final-copy"><span>Have a brief?</span><h2>Let's make<br/><i>something memorable.</i></h2><p>Weddings · Brands · Events · Flowers</p><button onClick={()=>enquire('Project enquiry')}>Enquire now <Arrow/></button></div></section>
     </main>
