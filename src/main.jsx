@@ -21,6 +21,12 @@ const shop = [
   { name: 'Something small', note: 'A considered seasonal gesture, wrapped and ready to give.', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=92' },
 ];
 
+const orderTypes = [
+  ['01', 'Hand-tied flowers', 'A seasonal, hand-tied arrangement made in the Leïa way — natural, considered and ready to gift.', 'From £45'],
+  ['02', 'Signature arrangement', 'A fuller floral moment for birthdays, thank-yous, dinner tables and beautiful just-because gestures.', 'From £65'],
+  ['03', 'Bespoke flowers', 'Tell us the occasion, mood and budget. We will create something specifically for you.', 'Made to order'],
+];
+
 function Arrow() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20 20 4M8 4h12v12" /></svg>; }
 function Close() { return <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18" /></svg>; }
 function SafeImage({ src, alt, eager = false }) {
@@ -47,6 +53,7 @@ function App() {
         <a href="#services" onClick={close}>Services</a>
         <a href="#flowerbar" onClick={close}>Flower Bar</a>
         <a href="#shop" onClick={close}>Flowers</a>
+        <a href="#order" onClick={close}>Order</a>
         <a href="#contact" onClick={close}>Enquire</a>
       </nav>
       <button className="menu" onClick={() => setMenu(!menu)} aria-label={menu ? 'Close menu' : 'Open menu'}>{menu ? <Close /> : <span>Menu</span>}</button>
@@ -94,12 +101,20 @@ function App() {
         <div className="shop-list">{shop.map(item => <article key={item.name}><div className="shop-photo"><SafeImage src={item.image} alt={item.name} /></div><div className="shop-copy"><div><h3>{item.name}</h3><p>{item.note}</p></div><button onClick={openEnquiry} aria-label={`Enquire about ${item.name}`}>Enquire <Arrow /></button></div></article>)}</div>
       </section>
 
+      <section className="order-section" id="order">
+        <div className="order-intro"><span>Order flowers · 05 / 06</span><h2>Flowers for<br /><i>the moment.</i></h2><p>For birthdays, thank-yous, dinner tables or simply because. Choose a starting point below and we will shape the flowers around the occasion.</p></div>
+        <div className="order-list">
+          {orderTypes.map(([num, title, copy, price]) => <article className="order-card" key={title}><div className="order-number">{num}</div><div className="order-card-copy"><h3>{title}</h3><p>{copy}</p><span>{price}</span></div><button onClick={openEnquiry}>Order flowers <Arrow /></button></article>)}
+        </div>
+        <div className="order-note"><span>Good to know</span><p>Seasonal flowers are subject to availability. For a specific colour palette, larger arrangement or a particular date, get in touch and we will create something bespoke.</p><button onClick={openEnquiry}>Ask about a bespoke order <Arrow /></button></div>
+      </section>
+
       <section className="closing" id="contact"><div><span>06 / 06</span></div><div><span>Have a brief?</span><h2>Let's make<br /><i>something memorable.</i></h2><p>Weddings, brands, events or a beautiful idea that does not fit a box.</p><a href="mailto:Hello@Leiaflorals.co.uk?subject=Floral%20enquiry">Hello@Leiaflorals.co.uk <Arrow /></a></div></section>
     </main>
 
-    <footer><div className="footer-word">Leïa <span>Florals</span><small>Floral design studio · Greater Manchester</small></div><div><span>Explore</span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#flowerbar">Flower Bar</a></div><div><span>Connect</span><a href="#shop">Flowers</a><a href="#contact">Enquiries</a><a href="https://www.instagram.com/leiaflorals/" target="_blank" rel="noreferrer">Instagram</a><a href="mailto:Hello@Leiaflorals.co.uk">Email</a></div><div className="footer-note">Past clients include<br />Jo Malone · Benefit Cosmetics<br /><br />© 2026 · Concept by The Pixel Muses</div></footer>
+    <footer><div className="footer-word">Leïa <span>Florals</span><small>Floral design studio · Greater Manchester</small></div><div><span>Explore</span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#flowerbar">Flower Bar</a></div><div><span>Connect</span><a href="#shop">Flowers</a><a href="#order">Order</a><a href="#contact">Enquiries</a><a href="https://www.instagram.com/leiaflorals/" target="_blank" rel="noreferrer">Instagram</a><a href="mailto:Hello@Leiaflorals.co.uk">Email</a></div><div className="footer-note">Past clients include<br />Jo Malone · Benefit Cosmetics<br /><br />© 2026 · Concept by The Pixel Muses</div></footer>
 
-    {orderOpen && <div className="modal" role="dialog" aria-modal="true" aria-label="Leïa Florals enquiry" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)} aria-label="Close enquiry"><Close /></button><span>Flowers / Enquiry</span><h2>Tell us what<br /><i>you're imagining.</i></h2><form onSubmit={e => { e.preventDefault(); window.location.href = 'mailto:Hello@Leiaflorals.co.uk?subject=Floral%20enquiry'; }}><input aria-label="Your name" placeholder="Your name" required /><input aria-label="Email address" type="email" placeholder="Email address" required /><input aria-label="Preferred date" placeholder="Preferred date" /><textarea aria-label="Enquiry details" rows="4" placeholder="Occasion, location, mood..." /><button type="submit">Send enquiry <Arrow /></button></form></div></div>}
+    {orderOpen && <div className="modal" role="dialog" aria-modal="true" aria-label="Leïa Florals enquiry" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)} aria-label="Close enquiry"><Close /></button><span>Flowers / Order & Enquiry</span><h2>Tell us what<br /><i>you're imagining.</i></h2><form onSubmit={e => { e.preventDefault(); window.location.href = 'mailto:Hello@Leiaflorals.co.uk?subject=Floral%20order%20or%20enquiry'; }}><input aria-label="Your name" placeholder="Your name" required /><input aria-label="Email address" type="email" placeholder="Email address" required /><input aria-label="Preferred date" placeholder="Preferred date" /><textarea aria-label="Order details" rows="4" placeholder="What would you like? Occasion, flowers, location, budget..." /><button type="submit">Send enquiry <Arrow /></button></form></div></div>}
   </div>;
 }
 createRoot(document.getElementById('root')).render(<App />);
