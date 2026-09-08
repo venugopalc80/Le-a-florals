@@ -12,6 +12,6 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
-    <script>window.addEventListener('load',()=>{const l=document.createElement('link');l.rel='stylesheet';l.href='/src/visual-refinement.css';document.head.appendChild(l)})</script>
+    <script>window.addEventListener('load',()=>{['/src/visual-refinement.css','/src/interaction-refinement.css'].forEach(h=>{const l=document.createElement('link');l.rel='stylesheet';l.href=h;document.head.appendChild(l)})})</script>
   </body>
 </html>
