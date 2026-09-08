@@ -1,12 +1,14 @@
 /* Final editorial polish — reduce noise, strengthen hierarchy, improve luxury restraint */
-.hero-copy{max-width:520px}.hero-intro{max-width:285px;letter-spacing:-.01em}.hero-image{box-shadow:0 30px 70px rgba(37,37,31,.08)}
+.hero-copy{max-width:520px}.hero-intro{max-width:285px;letter-spacing:-.01em}.hero-image{box-shadow:none}
 .approach-copy p,.statement-copy p,.flowerbar-copy>p:not(.script),.flowers-head p{letter-spacing:.01em}
+.nav nav{font-size:8px}.nav-order{font-size:8px}.hero-copy>span,.approach-copy>span,.statement-copy>span,.world-copy small,.worlds-head>span,.flowerbar-copy>span,.flowers-head>span,.final-copy>span{font-size:8px}
 .worlds{position:relative}.worlds:before{content:'LEÏA — FLORAL STUDIES';display:block;margin-bottom:18px;font:italic 13px 'Cormorant Garamond',serif;letter-spacing:.08em;color:#9b7269}.worlds-head{border-top:1px solid var(--line);padding-top:16px}.worlds-head>span{max-width:150px;line-height:1.5}.world h3{margin-bottom:12px}.world p{max-width:185px}
-.world:nth-child(even),.world:nth-child(3){box-shadow:none}.world-image .image{position:relative}.world-image .image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,37,31,0) 65%,rgba(37,37,31,.07));pointer-events:none}
+/* One calm canvas: the photography provides the contrast, not coloured cards. */
+.world,.world:nth-child(even),.world:nth-child(3){background:transparent;box-shadow:none}.world:nth-child(even),.world:nth-child(3){padding:17px 0 0;margin-left:0;margin-right:0}.world-image .image{position:relative}.world-image .image:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(37,37,31,0) 65%,rgba(37,37,31,.07));pointer-events:none}
 .statement{isolation:isolate}.statement-copy{position:relative;z-index:2}.statement blockquote{letter-spacing:.01em}.statement-image .image img{transform:scale(1.01)}
 .flowerbar{position:relative}.flowerbar-copy{position:relative;z-index:2}.flowerbar-image .image img{transform:scale(1.015)}
 .flowers{border-top:1px solid var(--line)}.flowers-head{margin-bottom:5vw}.flower-grid{gap:4vw}.flower-grid article{min-width:0}.flower-grid article>div:first-child{overflow:hidden}.flower-meta span{letter-spacing:-.02em}.flower-meta small{align-self:center}
 .final{overflow:hidden}.final:before{content:'07';position:absolute;top:3vw;left:3.2vw;font-size:7px;letter-spacing:.2em}.final-flower .image{background:transparent}.final-flower .image img{object-fit:contain}.final-copy{position:relative;z-index:2}
 .modal-card{box-shadow:0 30px 100px rgba(0,0,0,.22)}
-@media(max-width:900px){.hero-image{box-shadow:none}.worlds:before{margin-bottom:14px}.worlds-head{gap:20px}.worlds-head>span{max-width:none}.final:before{top:20px;left:20px}}
+@media(max-width:900px){.worlds:before{margin-bottom:14px}.worlds-head{gap:20px}.worlds-head>span{max-width:none}.world,.world:nth-child(2),.world:nth-child(3),.world:nth-child(4){margin:0 0 55px}.world,.world:nth-child(even),.world:nth-child(3){padding:17px 0 0;margin-left:0;margin-right:0}.final:before{top:20px;left:20px}}
 @media(max-width:600px){.hero-copy{max-width:none}.hero-intro{max-width:255px}.worlds:before{font-size:12px}.worlds-head{padding-top:14px}.flower-grid{gap:55px}.final:before{top:18px}.final-flower .image img{object-fit:contain}}
