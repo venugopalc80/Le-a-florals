@@ -4,20 +4,20 @@ import './styles.css';
 
 const work = [
   { title: 'Brand commissions', type: 'Floral direction · brand experience', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=92' },
-  { title: 'Wedding stories', type: 'Flowers · styling · installation', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1600&q=92' },
+  { title: 'Wedding stories', type: 'Personal flowers · styling · installation', image: 'https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1600&q=92' },
   { title: 'Floral studies', type: 'Editorial · creative direction', image: 'https://images.unsplash.com/photo-1490750967868-88aa4486c946?auto=format&fit=crop&w=1600&q=92' },
 ];
 
 const services = [
-  ['01', 'Brand collaborations', 'Floral moments for launches, gifting, campaigns and spaces.'],
-  ['02', 'Weddings & celebrations', 'Personal flowers and installations shaped around your day.'],
-  ['03', 'Events & installations', 'From intimate tablescapes to floral statements that change a room.'],
-  ['04', 'Editorial & styling', 'Considered floral direction for photography, content and creative work.'],
+  ['01', 'Brand collaborations', 'Launches, gifting, campaigns and spaces designed to feel unmistakably yours.'],
+  ['02', 'Weddings & celebrations', 'Personal flowers and installations built around the atmosphere you want to remember.'],
+  ['03', 'Events & installations', 'From intimate tablescapes to floral statements that completely change a room.'],
+  ['04', 'Editorial & styling', 'Considered floral direction for photography, content and creative production.'],
 ];
 
 const shop = [
-  { name: 'Seasonal flowers', note: 'Arrangements created around what is at its best.', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1200&q=92' },
-  { name: 'Flowers for the home', note: 'Sculptural seasonal arrangements for everyday spaces.', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1200&q=92' },
+  { name: 'Seasonal flowers', note: 'Arrangements created around what is at its best, in the studio now.', image: 'https://images.unsplash.com/photo-1487070183336-b863922373d4?auto=format&fit=crop&w=1200&q=92' },
+  { name: 'Flowers for the home', note: 'Sculptural seasonal arrangements for tables, shelves and everyday spaces.', image: 'https://images.unsplash.com/photo-1455582916367-25f75c4b3d08?auto=format&fit=crop&w=1200&q=92' },
   { name: 'Something small', note: 'A considered seasonal gesture, wrapped and ready to give.', image: 'https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1200&q=92' },
 ];
 
@@ -56,12 +56,12 @@ function App() {
       <section className="hero-new">
         <div className="hero-title"><p>Floral design studio · Greater Manchester</p><h1>flowers,<br /><i>arranged<br />differently.</i></h1></div>
         <div className="hero-photo"><SafeImage eager src="https://images.unsplash.com/photo-1526047932273-341f2a7631f9?auto=format&fit=crop&w=2000&q=94" alt="Editorial floral arrangement" /></div>
-        <div className="hero-note">Flowers for brands, spaces<br />and moments worth remembering.</div>
+        <div className="hero-note">Flowers with feeling<br />for brands, spaces and celebrations.</div>
       </section>
 
       <section className="manifesto" id="studio">
         <div className="manifesto-kicker">The point of view</div>
-        <div className="manifesto-copy"><p>Leïa Florals is a floral design studio creating work with <em>shape, seasonality and feeling.</em></p><span>From a single bouquet to a room transformed by flowers.</span></div>
+        <div className="manifesto-copy"><p>Leïa Florals is a floral design studio creating work with <em>shape, seasonality and feeling.</em></p><span>Not flowers added at the end. Flowers considered from the beginning.</span></div>
       </section>
 
       <section className="work-new" id="work">
@@ -72,13 +72,13 @@ function App() {
             <div className="gallery-caption"><div><strong>{item.title}</strong><small>{item.type}</small></div></div>
           </article>)}
         </div>
-        <button className="gallery-cta" onClick={openEnquiry}>Discuss a project <Arrow /></button>
+        <div className="gallery-footer"><button className="gallery-cta" onClick={openEnquiry}>Discuss a project <Arrow /></button><a href="https://www.instagram.com/leiaflorals/" target="_blank" rel="noreferrer">See more work on Instagram <Arrow /></a></div>
       </section>
 
       <section className="collab-strip"><span>Selected collaborations</span><strong>JO MALONE</strong><strong>BENEFIT COSMETICS</strong><span>Greater Manchester</span></section>
 
       <section className="services-new" id="services">
-        <div className="service-heading"><span>The studio · 02 / 06</span><h2>From a stem<br />to a <i>whole atmosphere.</i></h2><p>Floral work that can be soft, sculptural, romantic or unexpected. The brief sets the direction; the flowers do the rest.</p></div>
+        <div className="service-heading"><span>The studio · 02 / 06</span><h2>From a stem<br />to a <i>whole atmosphere.</i></h2><p>Soft, sculptural, romantic or unexpected. The brief sets the direction; the flowers build the feeling.</p></div>
         <div className="service-list">
           {services.map(([num, title, copy]) => <button className="service-item" key={title} onClick={openEnquiry}><b>{num}</b><div><strong>{title}</strong><p>{copy}</p></div><Arrow /></button>)}
         </div>
@@ -94,10 +94,10 @@ function App() {
         <div className="shop-list">{shop.map(item => <article key={item.name}><div className="shop-photo"><SafeImage src={item.image} alt={item.name} /></div><div className="shop-copy"><div><h3>{item.name}</h3><p>{item.note}</p></div><button onClick={openEnquiry} aria-label={`Enquire about ${item.name}`}>Enquire <Arrow /></button></div></article>)}</div>
       </section>
 
-      <section className="closing" id="contact"><div><span>06 / 06</span></div><div><span>Have a brief?</span><h2>Let's make<br /><i>something memorable.</i></h2><a href="mailto:Hello@Leiaflorals.co.uk?subject=Floral%20enquiry">Hello@Leiaflorals.co.uk <Arrow /></a></div></section>
+      <section className="closing" id="contact"><div><span>06 / 06</span></div><div><span>Have a brief?</span><h2>Let's make<br /><i>something memorable.</i></h2><p>Weddings, brands, events or a beautiful idea that does not fit a box.</p><a href="mailto:Hello@Leiaflorals.co.uk?subject=Floral%20enquiry">Hello@Leiaflorals.co.uk <Arrow /></a></div></section>
     </main>
 
-    <footer><div className="footer-word">Leïa <span>Florals</span><small>Floral design studio · Greater Manchester</small></div><div><span>Explore</span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#flowerbar">Flower Bar</a></div><div><span>Connect</span><a href="#shop">Flowers</a><a href="#contact">Enquiries</a><a href="mailto:Hello@Leiaflorals.co.uk">Email</a></div><div className="footer-note">Past clients include<br />Jo Malone · Benefit Cosmetics<br /><br />© 2026 · Concept by The Pixel Muses</div></footer>
+    <footer><div className="footer-word">Leïa <span>Florals</span><small>Floral design studio · Greater Manchester</small></div><div><span>Explore</span><a href="#work">Work</a><a href="#studio">Studio</a><a href="#services">Services</a><a href="#flowerbar">Flower Bar</a></div><div><span>Connect</span><a href="#shop">Flowers</a><a href="#contact">Enquiries</a><a href="https://www.instagram.com/leiaflorals/" target="_blank" rel="noreferrer">Instagram</a><a href="mailto:Hello@Leiaflorals.co.uk">Email</a></div><div className="footer-note">Past clients include<br />Jo Malone · Benefit Cosmetics<br /><br />© 2026 · Concept by The Pixel Muses</div></footer>
 
     {orderOpen && <div className="modal" role="dialog" aria-modal="true" aria-label="Leïa Florals enquiry" onClick={() => setOrderOpen(false)}><div className="modal-card" onClick={e => e.stopPropagation()}><button className="modal-close" onClick={() => setOrderOpen(false)} aria-label="Close enquiry"><Close /></button><span>Flowers / Enquiry</span><h2>Tell us what<br /><i>you're imagining.</i></h2><form onSubmit={e => { e.preventDefault(); window.location.href = 'mailto:Hello@Leiaflorals.co.uk?subject=Floral%20enquiry'; }}><input aria-label="Your name" placeholder="Your name" required /><input aria-label="Email address" type="email" placeholder="Email address" required /><input aria-label="Preferred date" placeholder="Preferred date" /><textarea aria-label="Enquiry details" rows="4" placeholder="Occasion, location, mood..." /><button type="submit">Send enquiry <Arrow /></button></form></div></div>}
   </div>;
