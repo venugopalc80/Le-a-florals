@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import './styles.css';
+import './editorial-final.css';
 
 const worlds = [
   { no: '01', title: 'Brands', line: 'Flowers that become part of the visual identity.', image: 'https://images.unsplash.com/photo-1523438885200-e635ba2c371e?auto=format&fit=crop&w=1800&q=92' },
@@ -33,13 +34,11 @@ function App(){
         <div className="hero-side"><span>Selected collaborations</span><br/>Jo Malone<br/>Benefit Cosmetics<br/><i>and more.</i></div><div className="scroll">Scroll <b>↓</b></div>
       </section>
 
-      <div className="marquee" aria-hidden="true"><div>LEÏA — FLORAL STUDIES <b>·</b> FORM <b>·</b> COLOUR <b>·</b> MOVEMENT <b>·</b> ATMOSPHERE <b>·</b> LEÏA — FLORAL STUDIES <b>·</b> FORM <b>·</b> COLOUR <b>·</b> MOVEMENT <b>·</b> ATMOSPHERE <b>·</b></div></div>
-
       <section className="approach" id="about"><div className="approach-image"><SafeImage src="https://images.unsplash.com/photo-1709294728704-c2de23b6dccf?auto=format&fit=crop&w=1700&q=92" alt="Close-up of hands arranging flowers in a studio"/></div><div className="approach-copy"><span>Our approach</span><h2>We don't just<br/><i>arrange flowers.</i></h2><p>We create atmosphere, shape, colour and feeling. Our work moves between intimate celebrations, brand worlds and editorial spaces — always with a strong visual point of view.</p><a href="#work">Enter the studio <Arrow/></a></div><div className="approach-detail"><span>More than flowers.</span><strong>A feeling.</strong></div></section>
 
       <section className="worlds" id="work"><div className="worlds-head"><span>Four ways into the world of Leïa</span><h2>Work that starts<br/><i>with a feeling.</i></h2></div><div className="world-grid">{worlds.map((w,i)=><article className={`world world-${i}`} key={w.title} id={w.title==='Weddings'?'weddings':w.title==='Events'?'events':undefined}><div className="world-copy"><small>{w.no}</small><h3>{w.title}</h3><p>{w.line}</p><button onClick={()=>enquire(w.title+' enquiry')}>View work <Arrow/></button></div><div className="world-image"><SafeImage src={w.image} alt={w.title}/></div></article>)}</div></section>
 
-      <section className="statement"><div className="statement-image"><SafeImage src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1900&q=92" alt="Floral installation with organic movement"/></div><div className="statement-copy"><span>Floral direction</span><h2>Make space<br/><i>for feeling.</i></h2><p>Flowers can transform a room, sharpen a visual identity and make a moment stay with you. We design with restraint, curiosity and a little unexpectedness.</p><a href="#contact">Start a conversation <Arrow/></a></div><blockquote>Form.<br/>Colour.<br/>Feeling.<small>— Leïa Florals</small></blockquote></section>
+      <section className="statement"><div className="statement-image"><SafeImage src="https://images.unsplash.com/photo-1527061011665-3652c757a4d4?auto=format&fit=crop&w=1900&q=92" alt="Floral installation with organic movement"/></div><div className="statement-copy"><span>Floral direction</span><h2>Make space<br/><i>for feeling.</i></h2><p>We collaborate with people and brands who believe flowers can transform a room, sharpen a visual identity and make a moment stay with you.</p><a href="#contact">Start a conversation <Arrow/></a></div><blockquote>Form.<br/>Colour.<br/>Feeling.</blockquote></section>
 
       <section className="flowerbar" id="flowerbar"><div className="flowerbar-copy"><span>05 · Coming soon · FIA Coffeehouse</span><h2>The<br/><i>Flower Bar.</i></h2><p className="script">flowers<br/>coffee<br/>good people</p><p>A new little ritual: fresh flowers, great coffee and something beautiful to take with you. Coming soon at FIA Coffeehouse.</p><a href="mailto:Hello@Leiaflorals.co.uk?subject=Flower%20Bar%20updates">Get Flower Bar updates <Arrow/></a></div><div className="flowerbar-image"><SafeImage src="https://images.unsplash.com/photo-1780815227186-9adce46d69f6?auto=format&fit=crop&w=1800&q=92" alt="Fresh flowers, coffee and a quiet cafe moment"/></div></section>
 
